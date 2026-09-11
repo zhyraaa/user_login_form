@@ -11,6 +11,15 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "bcryptjs": "^3.0.3",
     "express": "^5.2.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andikasatriaaaa666-ai/user_login_form.git"
+  },
+  "bugs": {
+    "url": "https://github.com/andikasatriaaaa666-ai/user_login_form/issues"
+  },
+  "homepage": "https://github.com/andikasatriaaaa666-ai/user_login_form#readme"
 }
