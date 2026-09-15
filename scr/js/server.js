@@ -52,3 +52,27 @@ app.post('/register', async (req, res) => {
 
     res.status(201).json({ message: 'User registered successfully' });
 });
+
+// login route
+app.post('/login', async (req, res) => {
+    const { username, password } = req.body;
+
+    // check if username and password are provided
+    if (!username || !password) {
+        return res.status(400).json({ message: 'Username and password are required' });
+    }
+
+    const users = readUsers();
+    const user = users.find(u => u.username === username);
+    if (!user) {
+        return res.status(400).json({ message: 'Invalid username or password' });
+    }
+
+    // compare the provided password with the hashed password stored in the database
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+        return res.status(400).json({ message: 'Invalid username or password' });
+    }
+
+    res.json({ message: 'Login successful' });
+});
