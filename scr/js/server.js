@@ -57,11 +57,7 @@ app.post('/register', async (req, res) => {
 app.post('/login', async (req, res) => {
     const { username, password } = req.body;
 
-    // check if username and password are provided
-    if (!username || !password) {
-        return res.status(400).json({ message: 'Username and password are required' });
-    }
-
+    // check username 
     const users = readUsers();
     const user = users.find(u => u.username === username);
     if (!user) {
