@@ -7,6 +7,24 @@ app.use(express.json());
 
 const DB_PATH = './scr/users.json';
 
+// calls from form submit
+async function handleFormSubmit(username, password) {
+    const response = await fetch('/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ username, password })
+    });
+
+    const result = await response.json();
+    if (response.ok) {
+        alert(result.message);
+    } else {
+        alert(result.message);
+    }
+}
+
 // function to read users from the JSON file
 const readUsers = () => {
     if (!fs.existsSync(DB_PATH)) {
