@@ -17,9 +17,8 @@ if (SubmitEvent) {
         const password = formData.get('password');
         await handleFormSubmit(username, password);
     });
-}
 
-async function handleFormSubmit(username, password) {
+    async function handleFormSubmit(username, password) {
     const response = await fetch('/login', {
         method: 'POST',
         headers: {
@@ -34,6 +33,7 @@ async function handleFormSubmit(username, password) {
     } else {
         alert(result.message);
     }
+}
 }
 
 // function to read users from the JSON file
