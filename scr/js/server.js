@@ -8,6 +8,17 @@ app.use(express.json());
 const DB_PATH = './scr/users.json';
 
 // calls from form submit
+
+if (SubmitEvent) {
+    document.getElementById('loginForm').addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+        const username = formData.get('username');
+        const password = formData.get('password');
+        await handleFormSubmit(username, password);
+    });
+}
+
 async function handleFormSubmit(username, password) {
     const response = await fetch('/login', {
         method: 'POST',
